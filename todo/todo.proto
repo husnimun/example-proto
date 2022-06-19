@@ -47,7 +47,6 @@ message UpdateTodoResponse {
 
 message ListTodoRequest {
   string name = 1;
-  string will_be_reverted = 2;
 }
 
 message ListTodoResponse {

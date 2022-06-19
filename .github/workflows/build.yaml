@@ -21,11 +21,10 @@ jobs:
           protoc --go_out=./example-protocgen-go --go_opt=paths=source_relative
           --go-grpc_out=./example-protocgen-go --go-grpc_opt=paths=source_relative
           todo/todo.proto
-      - run: |
+      - name: push
+        run: |
           cd example-protocgen-go
           go mod tidy
           git config user.name "Husni Munaya"
           git config user.email husnimun@gmail.com
-          git add .
-          git commit -m "${GITHUB_SHA:0:8}"
-          git push origin master
+          (git diff-index --quiet HEAD || git commit -m "${GITHUB_SHA:0:8}") && git push origin master
