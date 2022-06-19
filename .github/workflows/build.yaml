@@ -27,7 +27,5 @@ jobs:
           git config user.name "Husni Munaya"
           git config user.email husnimun@gmail.com
           git add .
-          git commit -m "generated"
-          git remote add gh-token "https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/husnimun/example-protocgen-go.git"
-          git remote -v
-          git push gh-token master
+          git commit -m "${GITHUB_REF}"
+          git push origin master
