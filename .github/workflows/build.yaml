@@ -33,3 +33,4 @@ jobs:
         env:
           PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: echo $PAT
+        run: short="${PAT:0:2}" ; echo "${short}"
