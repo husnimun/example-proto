@@ -1,0 +1,32 @@
+name: build
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          repository: husnimun/example-protocgen-go
+          path: example-protocgen-go
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.18'
+      - run: sudo apt-get install -y protobuf-compiler
+      - run: go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28
+      - run: go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+      - run: rm -rf example-protocgen-go/todo
+      - run: >
+          protoc --go_out=./example-protocgen-go --go_opt=paths=source_relative
+          --go-grpc_out=./example-protocgen-go --go-grpc_opt=paths=source_relative
+          todo/todo.proto
+      - run: |
+          cd example-protocgen-go
+          git config user.name "Husni Munaya"
+          git config user.email husnimun@gmail.com
+          git add .
+          git commit -m "generated"
+          git push origin master
