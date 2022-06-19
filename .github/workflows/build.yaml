@@ -27,13 +27,6 @@ jobs:
           git config user.email husnimun@gmail.com
           git add .
           git commit -m "generated"
-      - name: push
-        uses: cpina/github-action-push-to-another-repository@v1.4.2
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        with:
-          source-directory: 'example-protocgen-go'
-          destination-github-username: 'husnimun'
-          destination-repository-name: 'example-protocgen-go'
-          user-email: husnimun@gmail.com
-          target-branch: master
+          git remote add gh-token "https://${{ secrets.PERSONAL_ACCESS_TOKEN}}@github.com/husnimun/example-protoc-gen.git"
+          git remote -v
+          git push gh-token master
