@@ -9,7 +9,6 @@ jobs:
         with:
           repository: husnimun/example-protocgen-go
           path: example-protocgen-go
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - uses: actions/setup-go@v3
         with:
           go-version: '>=1.18'
@@ -21,17 +20,10 @@ jobs:
           protoc --go_out=./example-protocgen-go --go_opt=paths=source_relative
           --go-grpc_out=./example-protocgen-go --go-grpc_opt=paths=source_relative
           todo/todo.proto
-      # - run: |
-      #     cd example-protocgen-go
-      #     go mod tidy
-      #     git config user.name "Husni Munaya"
-      #     git config user.email husnimun@gmail.com
-      #     git add .
-      #     git commit -m "generated"
-      #     git push origin master
-      - name: test
-        env:
-          PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run: |
-          echo $PAT
-          short="${PAT:0:2}" ; echo "${short}"
+      - run: |
+          cd example-protocgen-go
+          go mod tidy
+          git config user.name "Husni Munaya"
+          git config user.email husnimun@gmail.com
+          git add .
+          git commit -m "generated"
