@@ -27,4 +27,4 @@ jobs:
           go mod tidy
           git config user.name "Husni Munaya"
           git config user.email husnimun@gmail.com
-          (git diff-index --quiet HEAD || git commit -m "${GITHUB_SHA:0:8}") && git push origin master
+          git add . && (git diff-index --quiet HEAD || git commit -m "${GITHUB_SHA:0:8}") && git push origin master
