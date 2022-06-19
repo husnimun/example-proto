@@ -1,7 +1,7 @@
-name: test
+name: build
 on: [push]
 jobs:
-  test-build:
+  build-go:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
