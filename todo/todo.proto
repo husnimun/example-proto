@@ -15,6 +15,7 @@ message Todo {
   string id = 1;
   string name = 2;
   bool completed = 3;
+  invalid syntax = 1;
 }
 
 
