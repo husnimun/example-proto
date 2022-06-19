@@ -27,8 +27,13 @@ jobs:
           git config user.email husnimun@gmail.com
           git add .
           git commit -m "generated"
-      - name: GitHub Push
-        uses: ad-m/github-push-action@v0.6.0
+      - name: push
+        uses: cpina/github-action-push-to-another-repository@v1.4.2
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          branch: master
+          source-directory: 'example-protocgen-go'
+          destination-github-username: 'husnimun'
+          destination-repository-name: 'example-protocgen-go'
+          user-email: husnimun@gmail.com
+          target-branch: master
