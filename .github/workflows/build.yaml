@@ -27,5 +27,5 @@ jobs:
           git config user.name "Husni Munaya"
           git config user.email husnimun@gmail.com
           git add .
-          git commit -m "${GITHUB_REF}"
+          git commit -m "${GITHUB_SHA:0:8}"
           git push origin master
