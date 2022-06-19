@@ -46,7 +46,7 @@ message UpdateTodoResponse {
 }
 
 message ListTodoRequest {
-  string name = 2;
+  string name = 1;
 }
 
 message ListTodoResponse {
